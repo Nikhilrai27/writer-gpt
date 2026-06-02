@@ -17,3 +17,15 @@ vectorstore=Chroma(
     embedding_function=embeddings,
     persist_directory="./chroma_db"
 )
+
+def retrieve_context(query, k=3):
+    results = vectorstore.similarity_search(
+        query,
+        k=k
+    )
+
+    context = "\n\n".join(
+        [doc.page_content for doc in results]
+    )
+
+    return context

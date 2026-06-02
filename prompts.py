@@ -6,6 +6,8 @@ character_prompt= ChatPromptTemplate.from_template(
     """
     You are an expert character designer.
 
+    
+
     Create a detailed character for:
 
     {request}
@@ -30,4 +32,15 @@ plot_prompt = ChatPromptTemplate.from_template(
 
     {request}
     """
+)
+
+memory_prompt = ChatPromptTemplate.from_template(
+"""
+Extract important long-term character facts.
+
+Character:
+{character}
+
+Return only the memory.
+"""
 )
